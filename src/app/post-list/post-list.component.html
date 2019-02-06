@@ -1,0 +1,16 @@
+<ul class="list-group col-8 m-auto" style="list-style-type: none">
+  <li *ngFor="let post of post; let i = index" [ngClass]="onLikeChange(i)">
+    <a (click)="deletePost(i)" style="cursor: pointer; float: right"><i class="far fa-trash-alt text-danger"></i></a>
+    <h4 class="text-center text-uppercase text-info">{{post.title}}</h4>
+    <p class="text-center">{{post.content}}</p>
+    <hr class="my-2">
+    <div class="d-flex justify-content-between">
+      <small class="text-capitalize text-info">{{post.createdAt | date: 'long'}}</small>
+      <div class="d-flex align-baseline">
+        <a (click)="addLikes(i)" style="cursor: pointer"><i class="far fa-thumbs-up text-primary"></i></a>
+        <a (click)="subLikes(i)" class="mx-3" style="cursor: pointer"><i class="far fa-thumbs-down text-danger"></i></a>
+        <h6 (click)="resetLikes(i)" class="text-capitalize" style="cursor: pointer">likes {{post.likes}} <i [ngClass]="heartChange(i)"></i></h6>
+      </div>
+    </div>
+  </li>
+</ul>
